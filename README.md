@@ -1,2 +1,24 @@
 # hawk-vuejs-medium-editor
-A medium like text editor for vue js WYSIWYG. This project is a copy of manuelgeek vuejs-medium-editor.
+
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
