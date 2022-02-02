@@ -1,9 +1,8 @@
 <template>
     <div id="app">
-        <div>content: {{content}}</div>
-        <i class="fas fa-plus"></i>
+        <!-- <div>content: {{content}}</div> -->
         <MediumEditor
-            @updateContent="content"
+            @updateContent="content = $event"
             :prefill="defaultValue"
             :options="options"
             :onChange="onChange"
@@ -94,7 +93,7 @@ export default {
   },
   methods: {
     onChange () {
-      console.log(this.content)
+      // console.log(this.content)
     },
     uploadCallback (url) {
       console.log('uploaded url', url)

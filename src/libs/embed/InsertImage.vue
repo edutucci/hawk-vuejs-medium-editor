@@ -1,30 +1,26 @@
 <template>
-    <div>InsertData: {{insertData}}</div>
     <VueUploadComponent
-        v-if="insertData"
-        ref="upload"
-        class="btn-toggle"
-        extensions="gif,jpg,jpeg,png,webp"
-        accept="image/png,image/gif,image/jpeg,image/webp"
-        :post-action="uploadUrl"
-        :headers="uploadUrlHeader"
-        :name="file_input_name"
-        :multiple="true"
-        :size="file_size"
-        v-model="insertData.files"
-        @input-filter="inputFilter"
-        @input-file="inputFile">
-        <!-- <font-awesome-icon :icon="['far', 'images']" /> -->
+      v-if="insertData"
+      ref="upload"
+      class="btn-toggle"
+      extensions="gif,jpg,jpeg,png,webp"
+      accept="image/png,image/gif,image/jpeg,image/webp"
+      :post-action="uploadUrl"
+      :headers="uploadUrlHeader"
+      :name="file_input_name"
+      :multiple="true"
+      :size="file_size"
+      v-model="insertData.files"
+      @input-filter="inputFilter"
+      @input-file="inputFile">
+      <i class="far fa-images"></i>
     </VueUploadComponent>
 </template>
 
 <script>
 import VueUploadComponent from 'vue-upload-component'
-import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faImages } from '@fortawesome/free-regular-svg-icons'
 import _ from 'underscore'
-library.add(faImages)
+
 export default {
   props: [
     'editor',
@@ -39,7 +35,6 @@ export default {
   ],
   emits: ['uploaded', 'imageClick'],
   components: {
-    // FontAwesomeIcon,
     VueUploadComponent
   },
   data () {
@@ -112,6 +107,7 @@ export default {
       this.isShow = true
       const currentPos = img.getBoundingClientRect()
       this.position.top = currentPos.top + 'px'
+
       this.$emit('imageClick', {
         position: this.position,
         currentLine: this.currentLine,

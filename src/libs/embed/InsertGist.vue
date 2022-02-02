@@ -1,18 +1,14 @@
 <template>
     <button class="btn-toggle" v-on:click="addEmbed" title="Gist URL">
-        <font-awesome-icon :icon="['fas', 'code']" />
+        <i class="fas fa-code"></i>
     </button>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCode } from '@fortawesome/free-solid-svg-icons'
+
 import Gist from 'pure-gist-embed'
 import randomstring from 'randomstring'
 import _ from 'underscore'
-
-library.add(faCode)
 
 export default {
   props: [
@@ -29,7 +25,6 @@ export default {
     }
   },
   components: {
-    FontAwesomeIcon
   },
   methods: {
     subscribe () {

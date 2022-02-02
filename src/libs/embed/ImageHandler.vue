@@ -12,7 +12,7 @@
         @input-filter="inputFilter"
         @input-file="inputFile"
         ref="upload">
-        <font-awesome-icon :icon="['far', 'images']" />
+        <i class="far fa-images"></i>
     </file-upload>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="image-handler" v-if="handlerData.isShow" v-bind:style="handlerData.position">
+    <div class="image-handler" v-if="handlerData && handlerData.isShow" v-bind:style="handlerData.position">
         <div class="image-hander-menu">
             <button class="btn-toggle" v-on:click="imageSizing('is-normal')">
                 <img src="../../assets/icons/image-align-normal-active.png" v-if="handlerData.currentSize == 'is-normal'">

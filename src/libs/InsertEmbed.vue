@@ -1,12 +1,12 @@
 <template>
     <div class="image-handler-container">
-        <div class="insert-image-container" v-show="insert.isShow" v-bind:style="insert.position">
+        <div class="insert-image-container" v-show="insert && insert.isShow" v-bind:style="insert.position">
             <div class="insert-image-toggle">
-                <button v-on:click="toggle" class="btn-toggle">
-                    <!-- <font-awesome-icon icon="plus" /> -->
+                <button @click="toggle" class="btn-toggle">
+                    <i class="fas fa-plus"></i>
                 </button>
             </div>
-            <div class="insert-image-menu" v-show="insert.isToggle">
+            <div class="insert-image-menu" v-show="insert && insert.isToggle">
                 <insert-image
                     v-if="!hideImage"
                     :editor="editor"
@@ -18,11 +18,11 @@
                     :file_size="file_size"
                     :imgur_bool="imgur_bool"
                     :handler="handler"
-                    v-on:uploaded="uploadCallback"
-                    v-on:imageClick="imageClickHandler"
+                    @uploaded="uploadCallback"
+                    @imageClick="imageClickHandler"
                     title="Insert Image"
                 ></insert-image>
-                <insert-gist v-if="!hideGist" :editor="editor"
+                <insert-gist v-if="insert && !hideGist" :editor="editor"
                     @onChange="onChange" :insert="insert" title="Insert gist"></insert-gist>
             </div>
         </div>
@@ -37,14 +37,11 @@
 import InsertImage from './embed/InsertImage'
 import InsertGist from './embed/InsertGist'
 import ImagePosition from './embed/ImagePosition'
-import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
 import _ from 'underscore'
-library.add(faPlus)
+
 export default {
   components: {
-    // FontAwesomeIcon,
     InsertImage,
     InsertGist,
     ImagePosition
@@ -118,7 +115,7 @@ export default {
       if (this.insert.isShow && this.insert.isToggle) {
         this.toggle()
       }
-      console.log('detectShowToggle: ', e.keyCode)
+
       if (e.keyCode === 13) {
         const focused = this.editor.getSelectedParentElement()
         const nextElm = focused.nextElementSibling
